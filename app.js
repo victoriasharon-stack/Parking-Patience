@@ -18,7 +18,8 @@ const scenarios = [
 const drivers = [
   { name: "Minivan Dad", style: "aggressive", icon: "🚐" },
   { name: "Nervous Nelly", style: "cautious", icon: "🚗" },
-  { name: "The Mirror", style: "mirror", icon: "🚙" }
+  { name: "The Mirror", style: "mirror", icon: "🚙" },
+  { name: "Speedy Sam", style: "aggressive", icon: "🏎️" }
 ];
 
 let round = 0;
