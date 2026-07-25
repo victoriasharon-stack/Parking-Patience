@@ -1,0 +1,348 @@
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Nunito', sans-serif;
+}
+body {
+  background:
+    repeating-radial-gradient(circle at 20% 30%, rgba(255,255,255,0.02) 0 1px, transparent 1px 3px),
+    repeating-radial-gradient(circle at 70% 60%, rgba(0,0,0,0.03) 0 1px, transparent 1px 4px),
+    linear-gradient(180deg, #6FCBF5 0%, #8FD9F8 27%, #A9E5B8 40%, #7ED957 44%, #8a9099 44%, #5b6068 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 14px 60px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* concrete curb strip between grass and asphalt */
+#curb {
+  position: fixed;
+  left: 0; right: 0;
+  top: 43.5%;
+  height: 10px;
+  background: repeating-linear-gradient(90deg, #d8d2c2 0 40px, #c7c1b0 40px 42px);
+  z-index: 0;
+  box-shadow: 0 3px 4px rgba(0,0,0,0.25);
+}
+
+/* painted parking lines on the asphalt */
+.lotLine {
+  position: fixed;
+  bottom: 30px;
+  width: 8px;
+  height: 44vh;
+  background: rgba(255,255,255,0.5);
+  z-index: 0;
+  transform: skewX(-6deg);
+  box-shadow: 0 0 4px rgba(255,255,255,0.2);
+}
+
+.parkedCar {
+  position: fixed;
+  bottom: 4px;
+  width: 78px;
+  z-index: 0;
+  filter: drop-shadow(0 8px 5px rgba(0,0,0,0.4));
+}
+.parkedCar.flip { transform: scaleX(-1); }
+
+.cloud {
+  position: fixed;
+  background: #fff;
+  border-radius: 50px;
+  opacity: 0.9;
+  z-index: 0;
+}
+.cloud::before, .cloud::after {
+  content: "";
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+}
+.cloud1 { width: 90px; height: 32px; top: 40px; left: 6%; animation: drift 22s linear infinite; }
+.cloud1::before { width: 46px; height: 46px; top: -22px; left: 10px; }
+.cloud1::after { width: 36px; height: 36px; top: -16px; left: 46px; }
+.cloud2 { width: 70px; height: 26px; top: 90px; right: 8%; animation: drift 28s linear infinite reverse; }
+.cloud2::before { width: 36px; height: 36px; top: -16px; left: 8px; }
+.cloud2::after { width: 28px; height: 28px; top: -12px; left: 36px; }
+@keyframes drift { from { transform: translateX(-20px); } 50% { transform: translateX(20px); } to { transform: translateX(-20px); } }
+
+#sun {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 54px; height: 54px;
+  background: #FFD23F;
+  border-radius: 50%;
+  box-shadow: 0 0 0 8px rgba(255,210,63,0.35);
+  z-index: 0;
+  animation: pulse 3s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100% { transform: translateX(-50%) scale(1); } 50% { transform: translateX(-50%) scale(1.06); } }
+
+.tree { position: fixed; bottom: 0; font-size: 46px; z-index: 0; filter: drop-shadow(0 4px 3px rgba(0,0,0,0.15)); }
+.tree1 { left: 3%; }
+.tree2 { right: 4%; }
+
+#app {
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+  z-index: 2;
+  background: #FFF8EC;
+  border: 5px solid #2E2A3D;
+  border-radius: 28px;
+  padding: 22px 20px 26px;
+  box-shadow: 0 10px 0 #2E2A3D, 0 16px 30px rgba(0,0,0,0.25);
+}
+
+h1 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  color: #2E2A3D;
+  margin: 4px 0 2px;
+  letter-spacing: 0.5px;
+}
+h1 .p {
+  display: inline-block;
+  background: #FF6B9D;
+  color: #fff;
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  line-height: 30px;
+  font-size: 18px;
+  transform: rotate(-6deg);
+  box-shadow: 0 3px 0 #c94d78;
+  margin-right: 4px;
+}
+#subtitle {
+  text-align: center;
+  color: #6b6580;
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+#soundBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #FFD23F;
+  border: 3px solid #2E2A3D;
+  color: #2E2A3D;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 15px;
+  box-shadow: 0 3px 0 #2E2A3D;
+}
+#soundBtn:active { transform: translateY(3px); box-shadow: none; }
+
+#hud {
+  display: flex;
+  justify-content: space-between;
+  background: #FFEFD6;
+  border: 3px solid #2E2A3D;
+  padding: 8px 14px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #2E2A3D;
+}
+#hud span { color: #FF6B9D; }
+
+#patience-label {
+  font-size: 11px;
+  font-weight: 800;
+  color: #6b6580;
+  margin: 0 0 4px 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+#patience-bar-wrap {
+  background: #E6E1D3;
+  border: 3px solid #2E2A3D;
+  height: 18px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  position: relative;
+}
+#patience-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #7ED957, #FFD23F 60%, #FF6B9D);
+  width: 100%;
+  transition: width 0.5s cubic-bezier(.4,1.4,.6,1);
+  border-radius: 8px 0 0 8px;
+}
+
+#scenario {
+  background: #E8F6FF;
+  border: 3px dashed #5DC9F1;
+  padding: 12px 14px;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #2E2A3D;
+  line-height: 1.4;
+  min-height: 40px;
+  position: relative;
+}
+#scenario::before {
+  content: "🔎";
+  margin-right: 6px;
+}
+
+#bidArea { text-align: center; margin-bottom: 6px; }
+#bidLabel {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2E2A3D;
+  margin-bottom: 10px;
+}
+.bidGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.bidBtn {
+  font-family: 'Fredoka', sans-serif;
+  background: #FFD23F;
+  border: 3px solid #2E2A3D;
+  color: #2E2A3D;
+  padding: 12px 0;
+  font-size: 17px;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #B8912A;
+  transition: transform 0.08s;
+}
+.bidBtn:hover { background: #FFDD6B; transform: translateY(-2px); }
+.bidBtn:active { transform: translateY(4px); box-shadow: none; }
+
+#reveal { display: none; }
+.driverRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #FFF3E0;
+  border: 3px solid #2E2A3D;
+  padding: 8px 12px;
+  border-radius: 14px;
+  margin-bottom: 8px;
+  font-weight: 800;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 14px;
+  color: #2E2A3D;
+  opacity: 0;
+  transform: translateY(10px) scale(0.95);
+  animation: popIn 0.4s forwards;
+}
+.driverRow .carIcon {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  border: 2px solid #2E2A3D;
+}
+.driverRow .name { flex: 1; }
+.driverRow.winner {
+  border-color: #3FA34D;
+  background: #DFF6E0;
+}
+.driverRow.winner .carIcon { background: #7ED957; }
+.driverRow.tied {
+  border-color: #E0463F;
+  background: #FBE0DE;
+}
+.driverRow.tied .carIcon { background: #FF8A80; }
+@keyframes popIn { to { opacity: 1; transform: translateY(0) scale(1); } }
+
+.num {
+  font-size: 19px;
+  font-weight: 800;
+  background: #2E2A3D;
+  color: #FFD23F;
+  padding: 3px 10px;
+  border-radius: 8px;
+}
+
+#resultText {
+  text-align: center;
+  margin: 14px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #2E2A3D;
+  min-height: 20px;
+  line-height: 1.4;
+}
+
+#nextBtn, #restartBtn {
+  display: block;
+  margin: 6px auto 0;
+  font-family: 'Fredoka', sans-serif;
+  background: #7ED957;
+  color: #1c3d1f;
+  border: 3px solid #2E2A3D;
+  padding: 12px 26px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 5px 0 #4d9c3a;
+}
+#nextBtn:active, #restartBtn:active { transform: translateY(5px); box-shadow: none; }
+
+#gameOver { display: none; text-align: center; }
+#gameOver h2 {
+  font-family: 'Fredoka', sans-serif;
+  color: #FF6B9D;
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+#scoreLine {
+  font-weight: 800;
+  font-size: 15px;
+  color: #2E2A3D;
+  margin: 10px 0 6px;
+}
+#verdict {
+  color: #6b6580;
+  font-weight: 700;
+  font-size: 13px;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+.trophyRow { font-size: 34px; margin: 6px 0; }
+
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 10px; height: 10px;
+  z-index: 5;
+  border-radius: 2px;
+  animation: fall linear forwards;
+}
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); opacity: 0.3; }
+}
+
+@media (max-width: 420px) {
+  h1 { font-size: 21px; }
+  .tree, #sun, .cloud, .parkedCar, .lotLine, #curb { display: none; }
+}

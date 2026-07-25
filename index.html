@@ -2,25 +2,105 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>The Last Parking Spot</title>
+<title>Parking Patience</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div id="sun"></div>
+<div class="cloud cloud1"></div>
+<div class="cloud cloud2"></div>
+<div class="tree tree1">🌳</div>
+<div class="tree tree2">🌳</div>
+
+<div id="curb"></div>
+<div class="lotLine" style="left:4%"></div>
+<div class="lotLine" style="left:16%"></div>
+<div class="lotLine" style="left:84%"></div>
+<div class="lotLine" style="left:96%"></div>
+
+<svg class="parkedCar" style="left:0%" viewBox="0 0 100 180" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="50" cy="168" rx="34" ry="8" fill="rgba(0,0,0,0.25)"/>
+  <rect x="14" y="30" width="72" height="130" rx="20" fill="#E0463F"/>
+  <rect x="14" y="30" width="72" height="130" rx="20" fill="url(#g1)" opacity="0.5"/>
+  <rect x="20" y="46" width="60" height="38" rx="10" fill="#8FD9F8"/>
+  <rect x="20" y="46" width="60" height="14" rx="7" fill="#c8f0ff" opacity="0.6"/>
+  <rect x="24" y="92" width="52" height="46" rx="8" fill="#c72d26"/>
+  <circle cx="30" cy="46" r="9" fill="#fff9d6"/>
+  <circle cx="70" cy="46" r="9" fill="#fff9d6"/>
+  <rect x="10" y="60" width="10" height="26" rx="5" fill="#2E2A3D"/>
+  <rect x="80" y="60" width="10" height="26" rx="5" fill="#2E2A3D"/>
+  <rect x="10" y="118" width="10" height="26" rx="5" fill="#2E2A3D"/>
+  <rect x="80" y="118" width="10" height="26" rx="5" fill="#2E2A3D"/>
+  <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.3"/><stop offset="1" stop-color="#000" stop-opacity="0.15"/></linearGradient></defs>
+</svg>
+
+<svg class="parkedCar" style="left:11%" viewBox="0 0 100 180" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="50" cy="168" rx="34" ry="8" fill="rgba(0,0,0,0.25)"/>
+  <rect x="14" y="26" width="72" height="134" rx="18" fill="#3E7FE0"/>
+  <rect x="14" y="26" width="72" height="134" rx="18" fill="url(#g2)" opacity="0.5"/>
+  <rect x="20" y="40" width="60" height="34" rx="9" fill="#a9d8ff"/>
+  <rect x="20" y="40" width="60" height="12" rx="6" fill="#dff1ff" opacity="0.6"/>
+  <rect x="22" y="82" width="56" height="60" rx="8" fill="#2c5cc4"/>
+  <circle cx="30" cy="40" r="8" fill="#fff9d6"/>
+  <circle cx="70" cy="40" r="8" fill="#fff9d6"/>
+  <rect x="9" y="56" width="10" height="26" rx="5" fill="#2E2A3D"/>
+  <rect x="81" y="56" width="10" height="26" rx="5" fill="#2E2A3D"/>
+  <rect x="9" y="120" width="10" height="26" rx="5" fill="#2E2A3D"/>
+  <rect x="81" y="120" width="10" height="26" rx="5" fill="#2E2A3D"/>
+  <defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.3"/><stop offset="1" stop-color="#000" stop-opacity="0.15"/></linearGradient></defs>
+</svg>
+
+<svg class="parkedCar flip" style="right:0%" viewBox="0 0 100 180" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="50" cy="168" rx="34" ry="8" fill="rgba(0,0,0,0.25)"/>
+  <rect x="14" y="28" width="72" height="132" rx="22" fill="#FFC93F"/>
+  <rect x="14" y="28" width="72" height="132" rx="22" fill="url(#g3)" opacity="0.5"/>
+  <rect x="20" y="44" width="60" height="36" rx="10" fill="#8FD9F8"/>
+  <rect x="20" y="44" width="60" height="13" rx="6" fill="#c8f0ff" opacity="0.6"/>
+  <rect x="23" y="88" width="54" height="52" rx="8" fill="#e0a52c"/>
+  <circle cx="30" cy="44" r="8.5" fill="#fff"/>
+  <circle cx="70" cy="44" r="8.5" fill="#fff"/>
+  <rect x="9" y="58" width="10" height="26" rx="5" fill="#2E2A3D"/>
+  <rect x="81" y="58" width="10" height="26" rx="5" fill="#2E2A3D"/>
+  <rect x="9" y="120" width="10" height="26" rx="5" fill="#2E2A3D"/>
+  <rect x="81" y="120" width="10" height="26" rx="5" fill="#2E2A3D"/>
+  <defs><linearGradient id="g3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.3"/><stop offset="1" stop-color="#000" stop-opacity="0.15"/></linearGradient></defs>
+</svg>
+
+<svg class="parkedCar flip" style="right:11%" viewBox="0 0 100 180" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="50" cy="168" rx="34" ry="8" fill="rgba(0,0,0,0.25)"/>
+  <rect x="12" y="24" width="76" height="136" rx="16" fill="#5DC96B"/>
+  <rect x="12" y="24" width="76" height="136" rx="16" fill="url(#g4)" opacity="0.5"/>
+  <rect x="18" y="36" width="64" height="32" rx="9" fill="#bdeacb"/>
+  <rect x="18" y="36" width="64" height="11" rx="5" fill="#e6faec" opacity="0.6"/>
+  <rect x="20" y="76" width="60" height="68" rx="9" fill="#3a9e4a"/>
+  <circle cx="28" cy="36" r="8" fill="#fff"/>
+  <circle cx="72" cy="36" r="8" fill="#fff"/>
+  <rect x="7" y="52" width="10" height="26" rx="5" fill="#2E2A3D"/>
+  <rect x="83" y="52" width="10" height="26" rx="5" fill="#2E2A3D"/>
+  <rect x="7" y="122" width="10" height="26" rx="5" fill="#2E2A3D"/>
+  <rect x="83" y="122" width="10" height="26" rx="5" fill="#2E2A3D"/>
+  <defs><linearGradient id="g4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0.3"/><stop offset="1" stop-color="#000" stop-opacity="0.15"/></linearGradient></defs>
+</svg>
+
 <div id="app">
-  <h1>🅿️ THE LAST PARKING SPOT</h1>
-  <div id="subtitle">Whoever blinks first loses the spot.</div>
+  <button id="soundBtn" title="Toggle sound">🔊</button>
+  <h1><span class="p">P</span>Parking Patience</h1>
+  <div id="subtitle">🚦 whoever blinks first loses the spot! 🚦</div>
 
   <div id="hud">
-    <div>Round <span id="roundNum">1</span>/8</div>
-    <div>Spots won: <span id="scoreNum">0</span></div>
+    <div>🚩 Round <span id="roundNum">1</span>/8</div>
+    <div>🏆 Spots won: <span id="scoreNum">0</span></div>
   </div>
+
+  <div id="patience-label">😤 your patience</div>
   <div id="patience-bar-wrap"><div id="patience-bar"></div></div>
-  <br>
 
   <div id="scenario"></div>
 
   <div id="bidArea">
-    <div id="bidLabel">How long are you willing to sit there, blinker on?</div>
+    <div id="bidLabel">How long will you sit there, blinker on?</div>
     <div class="bidGrid" id="bidGrid"></div>
   </div>
 
@@ -31,10 +111,11 @@
   </div>
 
   <div id="gameOver">
-    <h2>Lot's closing.</h2>
+    <div class="trophyRow">🏁</div>
+    <h2>Lot's closing!</h2>
     <div id="scoreLine"></div>
     <div id="verdict"></div>
-    <button id="restartBtn">Circle the lot again</button>
+    <button id="restartBtn">🔁 Circle the lot again</button>
   </div>
 </div>
 
