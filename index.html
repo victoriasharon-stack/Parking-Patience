@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Last Parking Spot</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <h1>🅿️ THE LAST PARKING SPOT</h1>
+  <div id="subtitle">Whoever blinks first loses the spot.</div>
+
+  <div id="hud">
+    <div>Round <span id="roundNum">1</span>/8</div>
+    <div>Spots won: <span id="scoreNum">0</span></div>
+  </div>
+  <div id="patience-bar-wrap"><div id="patience-bar"></div></div>
+  <br>
+
+  <div id="scenario"></div>
+
+  <div id="bidArea">
+    <div id="bidLabel">How long are you willing to sit there, blinker on?</div>
+    <div class="bidGrid" id="bidGrid"></div>
+  </div>
+
+  <div id="reveal">
+    <div id="driverList"></div>
+    <div id="resultText"></div>
+    <button id="nextBtn">Next Round →</button>
+  </div>
+
+  <div id="gameOver">
+    <h2>Lot's closing.</h2>
+    <div id="scoreLine"></div>
+    <div id="verdict"></div>
+    <button id="restartBtn">Circle the lot again</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
