@@ -6,7 +6,13 @@ const scenarios = [
   "Reverse lights. Real ones this time.",
   "A spot opens right by the entrance — everyone's seen it.",
   "Two spots down, someone's arguing with a shopping cart corral.",
-  "It's raining. Nobody wants to walk far. This spot matters more."
+  "It's raining. Nobody wants to walk far. This spot matters more.",
+  "A delivery van double-parks, blocking the row. Everyone's stuck waiting anyway.",
+  "Someone waves you off — they're saving it for a friend. Are they bluffing?",
+  "A jogger cuts through the lot, oblivious to the standoff around them.",
+  "The security guard's cart rolls by. Nobody wants to look too eager.",
+  "Two spots open at once, on opposite ends. Split the difference or commit?",
+  "It's getting dark. Headlights make it hard to tell who's actually leaving."
 ];
 
 const drivers = [
