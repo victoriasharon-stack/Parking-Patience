@@ -21,7 +21,8 @@ Features:
 How to run it locally?
 1) Download this repo and open index.html in your browser.
 
-How does it work?/ How to play?
+How does it work?/ How to play?:
+
 You'll start the game by any amount of seconds you wanna wait for depending upon the scenario given there, you basically can't match the same amount of seconds you wait w anyone else.
 Each round you'll have to outwait everyone w/o matching time w anyone which increases your patience bar. 
 All the audio from the click, the honks, the winning/losing chime sounds, bgm loop is from Web Audio Api so you dont need to really get an external mp3 or mp4 files.
